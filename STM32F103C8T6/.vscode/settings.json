@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "freertos.h": "c",
+        "main.h": "c",
+        "button.h": "c",
+        "tm1637.h": "c",
+        "gpio.h": "c",
+        "adc.h": "c"
+    }
+}
