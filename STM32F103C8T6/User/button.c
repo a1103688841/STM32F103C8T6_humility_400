@@ -30,7 +30,7 @@ extern void sw0_button_long_callcak();
 static uint8_t Read_SW0_Level(void)
 {
     GPIO_PinState pinState = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_1);
-    return (pinState == GPIO_PIN_SET) ? 1 : 0;
+    return (pinState == GPIO_PIN_RESET) ? 1 : 0;
 }
 
 //// Read the level of button SW1
@@ -44,10 +44,8 @@ static uint8_t Read_SW0_Level(void)
 void Button_Attach_ini(void)
 {
     // Initialize and attach callbacks for button SW0
-    Button_Create("pause", &sw0, Read_SW0_Level);
+    Button_Create("sw0", &sw0, Read_SW0_Level);
     Button_Attach(&sw0, BUTTON_DOWN, sw0_button_down_callcak);
-
-    Button_Create("pause", &sw0, Read_SW0_Level);
     Button_Attach(&sw0, BUTTON_LONG, sw0_button_long_callcak);
 
     // Initialize and attach callbacks for button SW1
@@ -106,7 +104,7 @@ void Button_Cycle_Process(button_t* btn)
     {
         if (btn->Button_Last_Level == btn->Button_Trigger_Level)
         {
-#if CONTINUOS_TRIGGER
+#if CONTINUOS_TRIGGER == 1
             // Handle continuous button press events
             if (++(btn->cycle_timercnt) >= BUTTON_CONTINUOS_CYCLE)
             {

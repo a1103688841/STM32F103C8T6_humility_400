@@ -246,7 +246,7 @@ void StartTask04_sensor(void const* argument)
         machine_state.adc1_voltage                = 3.3 * machine_state.adc1_value / 4096;
         machine_state.humidity_percent = machine_state.adc1_voltage * 30;
         HAL_ADC_Stop(&hadc1);
-        osDelay(pdMS_TO_TICKS(2000));
+        osDelay(pdMS_TO_TICKS(1000));
     }
     /* USER CODE END StartTask04_sensor */
 }

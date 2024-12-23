@@ -61,8 +61,8 @@ void tm1637_task_proceess()
         digit_segment[4] = 0x0;
         digit_segment[3] = _tm1637_digit[machine_state.food_types];
         digit_segment[2] = 0x0;
-        digit_segment[1] = _tm1637_digit[machine_state.humidity_percent_10];
-        digit_segment[0] = _tm1637_digit[machine_state.humidity_percent_1];
+        digit_segment[1] = _tm1637_digit[machine_state.humidity_percent_1];
+        digit_segment[0] = _tm1637_digit[machine_state.humidity_percent_10];
     }
     else
     {
